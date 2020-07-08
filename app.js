@@ -302,6 +302,7 @@ app.get('/deleterecord', (req, res) => {
     });
 });
 
+app.set( 'port', ( process.env.PORT || 5000 ));
 app.listen(5000, () => {
   console.log('server listening on port 5000');
 });
