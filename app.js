@@ -309,7 +309,7 @@ if (process.env.NODE_ENV === 'production') {
      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
    });*/
 
-  //method 2 (not working)
+  //method 2 
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
