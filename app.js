@@ -5,7 +5,7 @@ const Weather = require('./Weather');
 const { ApiKey } = require('./Weather');
 const uuidAPIKey = require('uuid-apikey');
 const nodemailer = require('nodemailer');
-
+var path = require('path');
 const port = process.env.PORT||5000;
 //const apikey = '385e80';
 const apikey = 'e55f37ddf75aa5c1f80c356fad572961';
@@ -302,17 +302,21 @@ app.get('/deleterecord', (req, res) => {
     });
 });
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
+
+  //method 1
+ /* app.use(express.static('client/build'))
   app.get('*', (req, res) => {
      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-   });
-  // Serve any static files
-  //app.use(express.static(path.join(__dirname, '../client/build')));
+   });*/
 
-  // Handle React routing, return all requests to React app
-  //app.get('*', function(req, res) {
-    //res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  //});
+  //method 2 (not working)
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  //Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 }
 app.listen(port, () => {
   console.log('server listening on port 5000');
