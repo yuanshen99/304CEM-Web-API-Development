@@ -301,13 +301,13 @@ app.get('/deleterecord', (req, res) => {
       res.status(400).json(error);
     });
 });
-if (process.env.NODE_ENV === 'production'){
-  // Serve any static file
-  app.use(express.static(path.join(_dirname, 'client/build')));
-  
-  // Hanlde React routing, return all request to React app
-  app.get('*', function(req,res){
-    res.sendFile(path.join(_dirname,'client/build', 'index.html'));
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
 app.listen(port, () => {
