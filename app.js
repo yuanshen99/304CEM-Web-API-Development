@@ -10,6 +10,27 @@ const port = process.env.PORT||5000;
 //const apikey = '385e80';
 const apikey = 'e55f37ddf75aa5c1f80c356fad572961';
 const apikey1 = '9619d5999296a389c50e108526c5b6b41dac433f';
+var transporter = nodemailer.createTransport({
+  //mailtrap testing server
+ //host: "smtp.mailtrap.io",
+ //port: 2525,
+  //elasticmail deployed server
+ host: "smtp.elasticemail.com",
+ port: "465",//465 for ssl, 587 for tsl, 2525 for unencrypted
+ tls: {
+    //do not fail on invalid certs
+   rejectUnauthorized: false
+},
+ auth: {
+   //mailtrap testing server
+   //user: "bdfe809d2820b1",
+   //pass:"2db1bde5142acc"
+   //elasticmail deployed server
+   user:"p18010695@student.newinti.edu.my",
+   pass: "5C9D7090158D0119B3EF7CC3F2F3CAEE579C"
+ }
+ //sendMail: true
+});
 
 //localhost:5000/recoverkey?email=${email}
 app.get('/recoverkey', (req, res) => {
@@ -21,24 +42,6 @@ app.get('/recoverkey', (req, res) => {
   Weather.ApiKey.find({email: email})
     .then(response => {
       if (response.length) {
-        var transporter = nodemailer.createTransport({
-          host: "smtp.mailtrap.io",
-          port: 2525,
-          //host: "smtp.elasticemail.com",
-          //port: "465",//465 for ssl, 587 for tsl, 2525 for unencrypted
-          tls: {
-             //do not fail on invalid certs
-            rejectUnauthorized: false
-        },
-          auth: {
-            user: "bdfe809d2820b1",
-            //user:"p18010695@student.newinti.edu.my",
-            pass:"2db1bde5142acc"
-            //pass: "5C9D7090158D0119B3EF7CC3F2F3CAEE579C"
-          }
-          //sendMail: true
-        });
-    
         var mailOptions = {
           from: 'The weather api team <p18010695@student.newinti.edu.my>',
           to: email,
@@ -90,28 +93,6 @@ app.get('/generatekey', (req, res) => {
   api
   .save()
   .then(response => {
-    var transporter = nodemailer.createTransport({
-       //mailtrap testing server
-      //host: "smtp.mailtrap.io",
-      //port: 2525,
-       //elasticmail deployed server
-      host: "smtp.elasticemail.com",
-      port: "465",//465 for ssl, 587 for tsl, 2525 for unencrypted
-      tls: {
-         //do not fail on invalid certs
-        rejectUnauthorized: false
-    },
-      auth: {
-        //mailtrap testing server
-        //user: "bdfe809d2820b1",
-        //pass:"2db1bde5142acc"
-        //elasticmail deployed server
-         user:"p18010695@student.newinti.edu.my",
-        pass: "5C9D7090158D0119B3EF7CC3F2F3CAEE579C"
-      }
-      //sendMail: true
-    });
-
     var mailOptions = {
       from: 'The weather api team <p18010695@student.newinti.edu.my>',
       to: email,
