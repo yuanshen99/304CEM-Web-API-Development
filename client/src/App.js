@@ -10,7 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      records: []
+      records: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
@@ -21,6 +21,7 @@ class App extends Component {
   this.callBackendAPI()
     .then(res => this.setState({ data: res.express }))
     .catch(err => console.log(err));
+    this.getAllRecords();
 }
   // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
 callBackendAPI = async () => {
@@ -46,9 +47,9 @@ callBackendAPI = async () => {
         console.log(error);
       });
   };
-  componentDidMount() {
-    this.getAllRecords();
-  }
+ /* componentDidMount() {
+    
+  }*/
 
   handleSubmit(e) {
     const query = `/getrecord?title=${this.input.value}`;
