@@ -108,7 +108,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="jumbotron text-center header">
-          <h1>Weather</h1>
+          <h1>Welcome to The Weather API</h1>
           <p>Search for weather</p>
         </div>
         <div className="container search">
