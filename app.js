@@ -91,19 +91,23 @@ app.get('/generatekey', (req, res) => {
   .save()
   .then(response => {
     var transporter = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
-      //host: "smtp.elasticemail.com",
-      //port: "465",//465 for ssl, 587 for tsl, 2525 for unencrypted
+       //mailtrap testing server
+      //host: "smtp.mailtrap.io",
+      //port: 2525,
+       //elasticmail deployed server
+      host: "smtp.elasticemail.com",
+      port: "465",//465 for ssl, 587 for tsl, 2525 for unencrypted
       tls: {
          //do not fail on invalid certs
         rejectUnauthorized: false
     },
       auth: {
-        user: "bdfe809d2820b1",
-        //user:"p18010695@student.newinti.edu.my",
-        pass:"2db1bde5142acc"
-        //pass: "5C9D7090158D0119B3EF7CC3F2F3CAEE579C"
+        //mailtrap testing server
+        //user: "bdfe809d2820b1",
+        //pass:"2db1bde5142acc"
+        //elasticmail deployed server
+         user:"p18010695@student.newinti.edu.my",
+        pass: "5C9D7090158D0119B3EF7CC3F2F3CAEE579C"
       }
       //sendMail: true
     });
