@@ -6,7 +6,7 @@ const { ApiKey } = require('./Weather');
 const uuidAPIKey = require('uuid-apikey');
 const nodemailer = require('nodemailer');
 
-
+const port = process.env.PORT||5000;
 //const apikey = '385e80';
 const apikey = 'e55f37ddf75aa5c1f80c356fad572961';
 const apikey1 = '9619d5999296a389c50e108526c5b6b41dac433f';
@@ -301,8 +301,15 @@ app.get('/deleterecord', (req, res) => {
       res.status(400).json(error);
     });
 });
-
-app.set( 'port', ( process.env.PORT || 5000 ));
-app.listen(5000, () => {
+if (process.env.NODE_ENV === 'production'){
+  // Serve any static file
+  app.use(express.static(path.join(_dirname, 'client/build')));
+  
+  // Hanlde React routing, return all request to React app
+  app.get('*', function(req,res){
+    res.sendFile(path.join(_dirname,'client/build', 'index.html'));
+  });
+}
+app.listen(port, () => {
   console.log('server listening on port 5000');
 });
