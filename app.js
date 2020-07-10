@@ -173,7 +173,8 @@ app.get('/getweather', (req, res) => {
           airpollution: airindex,
           time : latestupdate,
           url: airurl,
-          icon: "http://openweathermap.org/img/wn/"+icon+"@2x.png"
+          icon: "http://openweathermap.org/img/wn/"+icon+"@2x.png",
+          accessby:"apicall("+ useremail +")"
         });
         if (!weather.temp) {
           res.status(200).json('No weather info found');
@@ -233,7 +234,8 @@ app.get('/getrecord', (req, res) => {
           airpollution: airindex,
           time : latestupdate,
           url: airurl,
-          icon: "http://openweathermap.org/img/wn/"+icon+"@2x.png"
+          icon: "http://openweathermap.org/img/wn/"+icon+"@2x.png",
+          accessby:"webpage"
         });
         if (!weather.temp) {
           res.status(200).json('Weather info not found');

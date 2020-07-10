@@ -20,7 +20,8 @@ const schema = mongoose.Schema({
   airpollution: { type: String },
   time:{type: String},
   url: { type: String },
-  icon: { type: String }
+  icon: { type: String },
+  accessby:{type: String}
 });
 
 const schema1 = mongoose.Schema({
