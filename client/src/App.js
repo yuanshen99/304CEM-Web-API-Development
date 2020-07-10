@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ReactTable from 'react-table';
-import 'react-table/react-table.css';
+import './react-table-inverted.css';
 import axios from 'axios';
 import Popup from 'react-popup';
 import './Popup.css';

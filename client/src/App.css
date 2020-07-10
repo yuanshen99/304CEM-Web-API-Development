@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: black;
+  font-size: 16px;
 }
 
 .App-logo {
@@ -17,18 +19,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
 .form-control{
   text-align: center;
 }
 .weathersearch{
+
   width:55%;
   margin: 0 auto;
   align-items: center;
+}
+.App-link {
+  color: #61dafb;
 }
 .inputbox{
   margin: 50px;
@@ -43,12 +44,25 @@
     transform: rotate(360deg);
   }
 }
-
+.header h1{
+  font-size: 50px;
+}
 .header {
-  background-color: rgba(71, 227, 255, 0.979);
+  margin:50px;
+  font-size: 20px;
+}
+.button{
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  background-color: #61dafb;
 }
 .search {
+  border: none;
+  color:white;
+  background-image: url("weathergif.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   width:100%;
-  margin-top: -30px;
-  background-color: rgb(71, 227, 255, 0.979);
 }
