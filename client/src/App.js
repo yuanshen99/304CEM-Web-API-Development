@@ -114,7 +114,7 @@ class App extends Component {
         <div className="container search">
           <div className="col-sm-12">
             <p />
-            <form onSubmit={this.handleSubmit}>
+            <form class="weathersearch" onSubmit={this.handleSubmit}>
               <label>Enter location:</label>
               <input
                 type="text"
@@ -125,7 +125,7 @@ class App extends Component {
               <p />
               <input type="submit" value="Submit" />
             </form>
-            <form onSubmit={this.handleSubmit1}>
+            <form class="inputbox" onSubmit={this.handleSubmit1}>
             <label>Generate API Key: </label>
             <input
                 type="email"
@@ -136,7 +136,7 @@ class App extends Component {
             <p />
             <input type="submit" value="Generate"/>
             </form>
-            <form onSubmit={this.handleSubmit2}>
+            <form class="inputbox" onSubmit={this.handleSubmit2}>
             <label>Recover API Key: </label>
             <input
                 type="email"

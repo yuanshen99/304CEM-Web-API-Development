@@ -22,6 +22,19 @@
   color: #61dafb;
 }
 
+.form-control{
+  text-align: center;
+}
+.weathersearch{
+  width:55%;
+  margin: 0 auto;
+  align-items: center;
+}
+.inputbox{
+  margin: 50px;
+  width:23%;
+  display: inline-block;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -32,8 +45,10 @@
 }
 
 .header {
-  background-color: rgb(159, 187, 247);
+  background-color: rgba(71, 227, 255, 0.979);
 }
 .search {
-  background-color: rgb(241, 241, 169);
+  width:100%;
+  margin-top: -30px;
+  background-color: rgb(71, 227, 255, 0.979);
 }
