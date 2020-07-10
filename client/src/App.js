@@ -161,30 +161,26 @@ class App extends Component {
               data={data}
               columns={[
                 {
-                  Header: 'Delete',
-                  accessor: '_id',
-                  Cell: ({ value }) => (
-                    <a
-                      onClick={() => {
-                        this.deleteRecord(value);
-                      }}
-                    >
-                      Delete
-                    </a>
-                  )
-                },
-                {
-                  Header: 'Temperature',
-                  accessor: 'temp'
+                  icon: 'Icon',
+                  Cell: row => {
+                    return (
+                      <div>
+                        <img src={row.original.icon} />
+                      </div>
+                    );
+                  }
                 },
                 {
                   Header: 'Location',
                   accessor: 'location'
                 },
                 {
-                  Header: 'Station',
-                  accessor: 'station',
-                  style: { 'white-space': 'unset' }
+                  Header: 'Temperature (Celcius)',
+                  Cell: row=> (
+                    <div dangerouslySetInnerHTML={
+                      {__html: row.original.temp+"&#8451"}
+                    }
+                       />)
                 },
                 {
                   Header: 'Air Pollution Index',
@@ -192,7 +188,12 @@ class App extends Component {
                   style: { 'white-space': 'unset' }
                 },
                 {
-                  Header: 'Updated',
+                  Header: 'Monitoring Station',
+                  accessor: 'station',
+                  style: { 'white-space': 'unset' }
+                },
+                {
+                  Header: 'Station Last Updated',
                   accessor: 'time',
                   style: { 'white-space': 'unset' }
                 },
@@ -202,18 +203,22 @@ class App extends Component {
                   style: { 'white-space': 'unset' }
                 },
                 {
-                  icon: 'Icon',
-                  Cell: row => {
-                    return (
-                      <div>
-                        <img src={row.original.icon} />
-                      </div>
-                    );
-                  }
+                  Header: 'Delete',
+                  accessor: '_id',
+                  Cell: ({ value }) => (
+                    <button
+                      onClick={() => {
+                        this.deleteRecord(value);
+                      }}
+                      className="button"
+                    >
+                      Delete
+                    </button>
+                  )
                 }
               ]}
               defaultPageSize={5}
-              className="-striped -highlight"
+              className="table -striped -highlight"
             />
           </div>
         </div>

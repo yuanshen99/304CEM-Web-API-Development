@@ -57,6 +57,10 @@
   text-align: center;
   font-size: 16px;
   background-color: #61dafb;
+  color:white;
+}
+.table{
+  color:#d0d2d8;
 }
 .search {
   border: none;
