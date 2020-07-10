@@ -107,11 +107,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="jumbotron text-center header">
+        <div className="container search">
+        <div className="header">
           <h1>Welcome to The Weather API</h1>
           <p>Search for weather</p>
-        </div>
-        <div className="container search">
+          </div>
           <div className="col-sm-12">
             <p />
             <form class="weathersearch" onSubmit={this.handleSubmit}>
