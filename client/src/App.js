@@ -201,7 +201,7 @@ class App extends Component {
                   Header: 'Air Pollution Source Url',
                   Cell: row=> (
                     <div dangerouslySetInnerHTML={
-                      {__html:  "<a href="+ row.original.url +">"}
+                      {__html:  "<a href="+ row.original.url +">"+ row.original.url+"</a>"}
                     }
                        />),
                   style: { 'white-space': 'unset' }
