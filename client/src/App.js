@@ -123,7 +123,7 @@ class App extends Component {
                 ref={input => (this.input = input)}
               />
               <p />
-              <input type="submit" value="Submit" />
+              <input type="submit" class="button" value="Submit" />
             </form>
             <form class="inputbox" onSubmit={this.handleSubmit1}>
             <label>Generate API Key: </label>
@@ -134,7 +134,7 @@ class App extends Component {
                 ref={input1 => (this.input1 = input1)}
               />
             <p />
-            <input type="submit" value="Generate"/>
+            <input type="submit" class="button" value="Generate"/>
             </form>
             <form class="inputbox" onSubmit={this.handleSubmit2}>
             <label>Recover API Key: </label>
@@ -145,7 +145,7 @@ class App extends Component {
                 ref={input2 => (this.input2 = input2)}
               />
             <p />
-            <input type="submit" value="Recover"/>
+            <input type="submit" class="button" value="Recover"/>
             </form>
             <p />
           </div>
