@@ -199,7 +199,11 @@ class App extends Component {
                 },
                 {
                   Header: 'Air Pollution Source Url',
-                  accessor: 'url',
+                  Cell: row=> (
+                    <a dangerouslySetInnerHTML={
+                      {__html: row.original.url}
+                    }
+                       />),
                   style: { 'white-space': 'unset' }
                 },
                 {
