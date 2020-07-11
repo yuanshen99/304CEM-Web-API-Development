@@ -200,8 +200,8 @@ class App extends Component {
                 {
                   Header: 'Air Pollution Source Url',
                   Cell: row=> (
-                    <div hrefdangerouslySetInnerHTML={
-                      {__html:  '<a href='+row.original.url +'>'}>
+                    <div dangerouslySetInnerHTML={
+                      {__html:  "<a href="+ row.original.url +">"}
                     }
                        />),
                   style: { 'white-space': 'unset' }
