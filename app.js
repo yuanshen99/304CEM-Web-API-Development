@@ -10,6 +10,8 @@ const port = process.env.PORT||5000;
 //const apikey = '385e80';
 const apikey = 'e55f37ddf75aa5c1f80c356fad572961';
 const apikey1 = '9619d5999296a389c50e108526c5b6b41dac433f';
+var queue = 0;
+var queueapi= 0;
 var transporter = nodemailer.createTransport({
   //mailtrap testing server
  //host: "smtp.mailtrap.io",
@@ -122,7 +124,11 @@ app.get('/generatekey', (req, res) => {
 });
 
 //localhost:5000/getweather?location=${locationname}&apikey=${apikey}&userid=${registeredemail}
-app.get('/getweather', (req, res) => {
+app.get('/getweather', async(req, res) => {
+  if(queueapi!== 0){
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+  queueapi = 1;
   const cityname = req.query.location;
   const userkey = req.query.apikey;
   const useremail = req.query.userid;
@@ -183,6 +189,7 @@ app.get('/getweather', (req, res) => {
         weather
         .save()
         .then(response => {
+          queueapi = 0;
           res.status(200).json(response);
         })
 
@@ -201,7 +208,11 @@ app.get('/getweather', (req, res) => {
     });
 });
 //localhost:5000/getrecord?title=location
-app.get('/getrecord', (req, res) => {
+app.get('/getrecord', async(req, res) => {
+  if(queue!== 0){
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+  queue = 1;
   const cityname = req.query.title;
   if(cityname == "" || cityname == undefined){
     res.status(200).json('Please enter city name');
@@ -244,6 +255,7 @@ app.get('/getrecord', (req, res) => {
         weather
         .save()
         .then(response => {
+          queue = 0;
           res.status(200).json("Add weather detail succesfully");
         })
 
