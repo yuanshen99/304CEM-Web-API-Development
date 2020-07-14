@@ -48,7 +48,7 @@ app.get('/recoverkey', (req, res) => {
           from: 'The weather api team <p18010695@student.newinti.edu.my>',
           to: email,
           subject: 'Api Key for weather',
-          html: '<h1>Welcome to weather api!</h1><p>Your api key is ' + uuidAPIKey.toAPIKey(response[0].key) + ' and registered email is '+ email +'<p>Use the follow address to access to the api:</p>https://theweatherapi.herokuapp.com/getweather?location=${locationname}&apikey=${apikey}userid=${registeredemail}</p>'
+          html: '<h1>Welcome to weather api!</h1><p>Your api key is ' + uuidAPIKey.toAPIKey(response[0].key) + ' and registered email is '+ email +'<p>Use the follow address to access to the api:</p>https://theweatherapi.herokuapp.com/getweather?location=${locationname}&apikey=${apikey}&userid=${registeredemail}</p>'
         };
     
         transporter.sendMail(mailOptions, function(error, info){
@@ -99,7 +99,7 @@ app.get('/generatekey', (req, res) => {
       from: 'The weather api team <p18010695@student.newinti.edu.my>',
       to: email,
       subject: 'Api Key for weather',
-      html: '<h1>Welcome to weather api!</h1><p>Your api key is ' + create.apiKey + ' and registered email is '+ email +'<p>Use the follow address to access to the api:</p>https://theweatherapi.herokuapp.com/getweather?location=${locationname}&apikey=${apikey}userid=${registeredemail}</p>'
+      html: '<h1>Welcome to weather api!</h1><p>Your api key is ' + create.apiKey + ' and registered email is '+ email +'<p>Use the follow address to access to the api:</p>https://theweatherapi.herokuapp.com/getweather?location=${locationname}&apikey=${apikey}&userid=${registeredemail}</p>'
     };
 
     transporter.sendMail(mailOptions, function(error, info){
