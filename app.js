@@ -161,16 +161,17 @@ app.get('/getweather', async(req, res) => {
     .then(response => {
       lat = response.data.coord.lat;
       lon = response.data.coord.lon
-      temperature = response.data.main.temp;
-      city = response.data.name;
-      icon = response.data.weather[0].icon;
+      
       const querystr1 = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${apikey1}`;
-      axios.get(querystr1).then( (response) =>{
-        status = response.data.status;
-        airstation = response.data.data.city.name;
-        airurl = response.data.data.city.url;
-        airindex = response.data.data.aqi;
-        latestupdate = response.data.data.time.s;
+      axios.get(querystr1).then( (response1) =>{
+        status = response1.data.status;
+        airstation = response1.data.data.city.name;
+        airurl = response1.data.data.city.url;
+        airindex = response1.data.data.aqi;
+        latestupdate = response1.data.data.time.s;
+        temperature = response.data.main.temp;
+        city = response.data.name;
+        icon = response.data.weather[0].icon;
     
         const weather = new Weather.Weather({
           temp: temperature,
@@ -225,18 +226,18 @@ app.get('/getrecord', async(req, res) => {
     .then(response => {
       lat = response.data.coord.lat;
       lon = response.data.coord.lon
-      temperature = response.data.main.temp;
+      const querystr1 = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${apikey1}`;
+      axios.get(querystr1).then( (response1) =>{
+        status = response1.data.status;
+        airstation = response1.data.data.city.name;
+        airurl = response1.data.data.city.url;
+        airindex = response1.data.data.aqi;
+        latestupdate = response1.data.data.time.s;
+        temperature = response.data.main.temp;
       city = response.data.name;
       icon = response.data.weather[0].icon;
-      const querystr1 = `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${apikey1}`;
-      axios.get(querystr1).then( (response) =>{
-        status = response.data.status;
-        airstation = response.data.data.city.name;
-        airurl = response.data.data.city.url;
-        airindex = response.data.data.aqi;
-        latestupdate = response.data.data.time.s;
         console.log(status);
-        console.log(response.data.data.iaqi.p);
+        console.log(response1.data.data.iaqi.p);
     
         const weather = new Weather.Weather({
           temp: temperature,
